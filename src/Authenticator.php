@@ -3,6 +3,7 @@
 namespace Shakewell\Litecard;
 
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class Authenticator
@@ -11,17 +12,33 @@ class Authenticator
 
     protected ?string $token = null;
 
-    public function token(): string
+    /**
+     * Get cached authentication token (static method).
+     */
+    public static function token(): string
     {
-        return (new static())
-            ->integrate()
-            ->getToken();
+        return Cache::remember('lite_card_token', 86300, function () {
+            return (new static)
+                ->integrate()
+                ->getToken();
+        });
     }
 
+    /**
+     * Instance method for backward compatibility.
+     */
+    public function token(): string
+    {
+        return self::token();
+    }
+
+    /**
+     * Authenticate with LiteCard API.
+     */
     public function integrate(): static
     {
         $this->response = Http::timeout(15)
-            ->post(config('litecard.baseurl') . '/api/v1/token', [
+            ->post(config('litecard.base_url') . '/api/v1/token', [
                 'username' => config('litecard.username'),
                 'password' => config('litecard.password'),
             ]);
@@ -33,13 +50,23 @@ class Authenticator
         return $this;
     }
 
+    /**
+     * Get authentication response.
+     */
     public function getResponse(): Response
     {
         return $this->response;
     }
 
-    public function getToken(): string
+    /**
+     * Get authentication token.
+     */
+    public function getToken(): ?string
     {
+        if (!$this->token) {
+            throw new LiteCardException('Authentication failed. Token not available.');
+        }
+
         return $this->token;
     }
 }
