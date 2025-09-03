@@ -2,7 +2,4 @@
 
 namespace Shakewell\Litecard;
 
-class LiteCardException extends \Exception
-{
-
-}
+class LiteCardException extends \Exception {}

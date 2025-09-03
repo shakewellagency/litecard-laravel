@@ -13,7 +13,7 @@ class LiteCardServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Merge package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/litecard.php', 'litecard');
+        $this->mergeConfigFrom(__DIR__.'/../config/litecard.php', 'litecard');
 
         // Register services
         $this->app->singleton(Card::class);
@@ -33,20 +33,20 @@ class LiteCardServiceProvider extends ServiceProvider
     {
         // Publish configuration
         $this->publishes([
-            __DIR__ . '/../config/litecard.php' => config_path('litecard.php'),
+            __DIR__.'/../config/litecard.php' => config_path('litecard.php'),
         ], 'litecard-config');
 
         // Publish migrations
         $this->publishes([
-            __DIR__ . '/../database/migrations' => database_path('migrations'),
+            __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'litecard-migrations');
 
         // Load migrations
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         // Load routes if they exist
-        if (file_exists(__DIR__ . '/routes.php')) {
-            $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        if (file_exists(__DIR__.'/routes.php')) {
+            $this->loadRoutesFrom(__DIR__.'/routes.php');
         }
     }
 

@@ -1,5 +1,10 @@
 # LiteCard Laravel Package
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/shakewellagency/litecard-laravel.svg?style=flat-square)](https://packagist.org/packages/shakewellagency/litecard-laravel)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/shakewellagency/litecard-laravel/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/shakewellagency/litecard-laravel/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/shakewellagency/litecard-laravel/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/shakewellagency/litecard-laravel/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/shakewellagency/litecard-laravel.svg?style=flat-square)](https://packagist.org/packages/shakewellagency/litecard-laravel)
+
 A comprehensive Laravel package for integrating with LiteCard digital membership card service.
 
 ## Features

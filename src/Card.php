@@ -2,9 +2,9 @@
 
 namespace Shakewell\Litecard;
 
-use Shakewell\Litecard\Enums\CardStatusEnum;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
+use Shakewell\Litecard\Enums\CardStatusEnum;
 
 class Card
 {
@@ -16,7 +16,7 @@ class Card
         $token = Authenticator::token();
 
         return Http::withToken($token)->post(
-            config('litecard.base_url') . '/api/v1/card',
+            config('litecard.base_url').'/api/v1/card',
             $data,
         );
     }
@@ -36,7 +36,7 @@ class Card
             ],
             'options' => [
                 'emailInvitationEnabled' => $emailInvitation,
-            ]
+            ],
         ]);
     }
 
@@ -45,14 +45,14 @@ class Card
      */
     public function status(string $cardId, string $status): Response
     {
-        if (!in_array($status, CardStatusEnum::values())) {
-            throw new LiteCardException('Invalid card status: ' . $status);
+        if (! in_array($status, CardStatusEnum::values())) {
+            throw new LiteCardException('Invalid card status: '.$status);
         }
 
         $token = Authenticator::token();
 
         return Http::withToken($token)->post(
-            config('litecard.base_url') . '/api/v1/card/status',
+            config('litecard.base_url').'/api/v1/card/status',
             [
                 'cardId' => $cardId,
                 'status' => $status,
@@ -68,7 +68,7 @@ class Card
         $token = Authenticator::token();
 
         return Http::withToken($token)->get(
-            config('litecard.base_url') . '/api/v1/card/' . $cardId
+            config('litecard.base_url').'/api/v1/card/'.$cardId
         );
     }
 
@@ -83,6 +83,6 @@ class Card
             return $response->json();
         }
 
-        throw new LiteCardException('Failed to retrieve card: ' . $response->body());
+        throw new LiteCardException('Failed to retrieve card: '.$response->body());
     }
 }

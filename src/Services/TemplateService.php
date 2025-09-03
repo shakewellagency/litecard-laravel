@@ -16,19 +16,18 @@ class TemplateService
     {
         try {
             $token = Authenticator::token();
-            
+
             $response = Http::withToken($token)->get(
-                config('litecard.base_url') . '/api/v1/templates'
+                config('litecard.base_url').'/api/v1/templates'
             );
 
             if ($response->successful()) {
                 return collect($response->json('data', []));
             }
 
-            throw new LiteCardException('Failed to retrieve templates: ' . $response->body());
-
+            throw new LiteCardException('Failed to retrieve templates: '.$response->body());
         } catch (\Exception $e) {
-            throw new LiteCardException('Template service error: ' . $e->getMessage());
+            throw new LiteCardException('Template service error: '.$e->getMessage());
         }
     }
 
@@ -39,19 +38,18 @@ class TemplateService
     {
         try {
             $token = Authenticator::token();
-            
+
             $response = Http::withToken($token)->get(
-                config('litecard.base_url') . '/api/v1/templates/' . $templateId
+                config('litecard.base_url').'/api/v1/templates/'.$templateId
             );
 
             if ($response->successful()) {
                 return $response->json();
             }
 
-            throw new LiteCardException('Template not found: ' . $templateId);
-
+            throw new LiteCardException('Template not found: '.$templateId);
         } catch (\Exception $e) {
-            throw new LiteCardException('Template service error: ' . $e->getMessage());
+            throw new LiteCardException('Template service error: '.$e->getMessage());
         }
     }
 

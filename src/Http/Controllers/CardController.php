@@ -107,7 +107,7 @@ class CardController extends Controller
             ]);
 
             $data = $this->prepareCardData($validatedData);
-            $card = new Card();
+            $card = new Card;
             $response = $card->create($data);
 
             if ($response->failed()) {
@@ -141,7 +141,7 @@ class CardController extends Controller
         } catch (LiteCardException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'LiteCard error: ' . $e->getMessage(),
+                'message' => 'LiteCard error: '.$e->getMessage(),
             ], 422);
         }
     }
@@ -167,7 +167,7 @@ class CardController extends Controller
         $validatedData = $validator->validated();
 
         try {
-            $card = new Card();
+            $card = new Card;
             $response = $card->status($validatedData['card_id'], $validatedData['status']);
 
             if ($response->successful()) {
@@ -191,7 +191,7 @@ class CardController extends Controller
         } catch (LiteCardException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'LiteCard error: ' . $e->getMessage(),
+                'message' => 'LiteCard error: '.$e->getMessage(),
             ], 422);
         }
     }
@@ -202,7 +202,7 @@ class CardController extends Controller
     public function show(string $cardId): JsonResponse
     {
         try {
-            $card = new Card();
+            $card = new Card;
             $response = $card->get($cardId);
 
             if ($response->successful()) {
@@ -220,7 +220,7 @@ class CardController extends Controller
         } catch (LiteCardException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'LiteCard error: ' . $e->getMessage(),
+                'message' => 'LiteCard error: '.$e->getMessage(),
             ], 422);
         }
     }
@@ -241,7 +241,7 @@ class CardController extends Controller
             ],
             'options' => [
                 'emailInvitationEnabled' => $validatedData['email_invitation'] ?? true,
-            ]
+            ],
         ];
     }
 

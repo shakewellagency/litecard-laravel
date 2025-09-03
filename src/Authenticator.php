@@ -38,7 +38,7 @@ class Authenticator
     public function integrate(): static
     {
         $this->response = Http::timeout(15)
-            ->post(config('litecard.base_url') . '/api/v1/token', [
+            ->post(config('litecard.base_url').'/api/v1/token', [
                 'username' => config('litecard.username'),
                 'password' => config('litecard.password'),
             ]);
@@ -63,7 +63,7 @@ class Authenticator
      */
     public function getToken(): ?string
     {
-        if (!$this->token) {
+        if (! $this->token) {
             throw new LiteCardException('Authentication failed. Token not available.');
         }
 

@@ -3,7 +3,6 @@
 namespace Shakewell\Litecard\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Shakewell\Litecard\LiteCardException;
 use Shakewell\Litecard\Services\TemplateService;
@@ -33,7 +32,7 @@ class TemplateController extends Controller
         } catch (LiteCardException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to retrieve templates: ' . $e->getMessage(),
+                'message' => 'Failed to retrieve templates: '.$e->getMessage(),
             ], 422);
         }
     }
@@ -54,7 +53,7 @@ class TemplateController extends Controller
         } catch (LiteCardException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Template not found: ' . $e->getMessage(),
+                'message' => 'Template not found: '.$e->getMessage(),
             ], 404);
         }
     }

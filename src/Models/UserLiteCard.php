@@ -30,6 +30,7 @@ class UserLiteCard extends Model
     public function user(): BelongsTo
     {
         $userModel = config('litecard.user_model', \App\Models\User::class);
+
         return $this->belongsTo($userModel);
     }
 
