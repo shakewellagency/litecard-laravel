@@ -13,11 +13,7 @@
     "authors": [
         {
             "name": "Shakewell Agency",
-            "email": "info@shakewellagency.com"
-        },
-        {
-            "name": "Ehsan Tavakoli",
-            "email": "ehsantavakoli.dev@gmail.com"
+            "email": "developers@shakewell.agency"
         }
     ],
     "require": {
