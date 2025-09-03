@@ -27,7 +27,7 @@ class Authenticator
     /**
      * Instance method for backward compatibility.
      */
-    public function token(): string
+    public function getAccessToken(): string
     {
         return self::token();
     }
